@@ -1,10 +1,43 @@
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import MuiAppBar from "@mui/material/AppBar";
-import { styled } from "@mui/material/styles";
-import { IconButton, Typography } from "@mui/material";
+import { styled, alpha, useTheme } from "@mui/material/styles";
+import { Box, IconButton, Stack } from "@mui/material";
+import Person2OutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
 
 const drawerWidth = 240;
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(3),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -30,7 +63,24 @@ const AppBar = styled(MuiAppBar, {
   ],
 }));
 
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
+    },
+  },
+}));
+
 export default function TopBar({ open, handleDrawerOpen }) {
+
+    const theme = useTheme()
+
   return (
     <>
       <AppBar
@@ -53,9 +103,40 @@ export default function TopBar({ open, handleDrawerOpen }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
-          </Typography>
+
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+
+          <Box flexGrow={1}></Box>
+
+          <Stack direction={"row"}>
+            {theme.palette.mode ==="light" ? (
+              <IconButton color="inherit">
+                <LightModeOutlinedIcon />
+              </IconButton>
+            ) : (
+              <IconButton color="inherit">
+                <DarkModeOutlinedIcon />
+              </IconButton>
+            )}
+
+            <IconButton color="inherit">
+              <NotificationsNoneOutlinedIcon />
+            </IconButton>
+            <IconButton color="inherit">
+              <SettingsOutlinedIcon />
+            </IconButton>
+            <IconButton color="inherit">
+              <Person2OutlinedIcon />
+            </IconButton>
+          </Stack>
         </Toolbar>
       </AppBar>
     </>
