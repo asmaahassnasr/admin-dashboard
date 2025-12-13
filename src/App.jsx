@@ -5,6 +5,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -27,18 +34,20 @@ export default function App() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <TopBar open={open} handleDrawerOpen={handleDrawerOpen} />
+    <ThemeProvider theme={darkTheme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <TopBar open={open} handleDrawerOpen={handleDrawerOpen} />
 
-      <SideBar open={open} handleDrawerClose={handleDrawerClose} />
+        <SideBar open={open} handleDrawerClose={handleDrawerClose} />
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <Typography sx={{ marginBottom: 2 }}>
-          content ...............
-        </Typography>
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
+          <Typography sx={{ marginBottom: 2 }}>
+            content ...............
+          </Typography>
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 }

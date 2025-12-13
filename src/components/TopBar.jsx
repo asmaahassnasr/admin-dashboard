@@ -1,7 +1,7 @@
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import MuiAppBar from "@mui/material/AppBar";
-import { styled, alpha, useTheme } from "@mui/material/styles";
+import { styled, alpha, useTheme, useColorScheme } from "@mui/material/styles";
 import { Box, IconButton, Stack } from "@mui/material";
 import Person2OutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
@@ -80,6 +80,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function TopBar({ open, handleDrawerOpen }) {
 
     const theme = useTheme()
+  const { mode, setMode } = useColorScheme();
 
   return (
     <>
@@ -117,12 +118,12 @@ export default function TopBar({ open, handleDrawerOpen }) {
           <Box flexGrow={1}></Box>
 
           <Stack direction={"row"}>
-            {theme.palette.mode ==="light" ? (
-              <IconButton color="inherit">
+            {mode ==="light" ? (
+              <IconButton color="inherit" onClick={() => { setMode("light") }}>
                 <LightModeOutlinedIcon />
               </IconButton>
             ) : (
-              <IconButton color="inherit">
+              <IconButton color="inherit" onClick={() => { setMode("dark") }}>
                 <DarkModeOutlinedIcon />
               </IconButton>
             )}
