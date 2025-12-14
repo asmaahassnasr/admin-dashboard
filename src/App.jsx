@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Outlet } from "react-router-dom";
 
 const darkTheme = createTheme({
   palette: {
@@ -43,9 +44,7 @@ export default function App() {
 
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
-          <Typography sx={{ marginBottom: 2 }}>
-            content ...............
-          </Typography>
+          <Outlet />
         </Box>
       </Box>
     </ThemeProvider>

@@ -2,15 +2,34 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
-
+import Dashboard from './pages/dashboard/Dashboard';
+import Team from './pages/team/Team';
+import { Contacts } from './pages/contacts/contacts';
+import { Invoices } from './pages/invoices/Invoices';
+import { ProfileForm } from './pages/profileForm/ProfileForm';
+import { Calender } from './pages/calender/Calender';
+import { Faq } from './pages/faq/Faq';
+import { Barchart } from './pages/barchart/Barchart';
+import { Piechart } from './pages/piechart/Piechart';
+import { Mapchart } from './pages/mapchart/Mapchart';
+import {linechart} from './pages/linechart/Linechart';
 // Define your routes
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />, // Acts as a layout
+    element: <App />, 
     children: [
-      { index: true, element: <App /> }, // Default page at "/"
-      // { path: "about", element: <About /> },
+      { index: true, element: <Dashboard /> },
+      { path: "team", element: <Team /> },
+      { path: "contacts", element: <Contacts /> },
+      { path: "invoices", element: <Invoices /> },
+      { path: "profileForm", element: <ProfileForm /> },
+      { path: "calender", element: <Calender /> },
+      { path: "faq", element: <Faq /> },
+      { path: "barchart", element: <Barchart /> },
+      { path: "piechart", element: <Piechart /> },
+      // { path: "linechart", element: <linechart /> },
+      { path: "mapchart", element: <Mapchart /> },
     ],
   },
 ]);

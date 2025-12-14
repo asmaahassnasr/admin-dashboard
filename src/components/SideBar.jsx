@@ -97,16 +97,16 @@ const elementArrOne = [
 ];
 
 const elementArrTwo = [
-  { text: "Profile Form", icon: <PersonOutlineOutlinedIcon />, path: "/form" },
+  { text: "Profile Form", icon: <PersonOutlineOutlinedIcon />, path: "/profileForm" },
   { text: "Calender", icon: <CalendarTodayOutlinedIcon />, path: "/calender" },
   { text: "FAQs Page", icon: <HelpOutlineOutlinedIcon />, path: "/faq" },
 ];
 
 const elementArrThree = [
-  { text: "Bar Chart", icon: <BarChartOutlinedIcon />, path: "/" },
-  { text: "Pie Chart", icon: <PieChartOutlineOutlinedIcon />, path: "/team" },
-  { text: "Line Chart", icon: <TimelineOutlinedIcon />, path: "/contacts" },
-  { text: "Geography Chart", icon: <MapOutlinedIcon />, path: "/invoices" },
+  { text: "Bar Chart", icon: <BarChartOutlinedIcon />, path: "/barchart" },
+  { text: "Pie Chart", icon: <PieChartOutlineOutlinedIcon />, path: "/piechart" },
+  { text: "Line Chart", icon: <TimelineOutlinedIcon />, path: "/linechart" },
+  { text: "Geography Chart", icon: <MapOutlinedIcon />, path: "/mapchart" },
 ];
 
 export default function SideBar({ open, handleDrawerClose }) {
