@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Dashboard from './pages/dashboard/Dashboard';
 import Team from './pages/team/Team';
-import { Contacts } from './pages/contacts/contacts';
+import { Contacts } from './pages/contacts/Contacts';
 import { Invoices } from './pages/invoices/Invoices';
 import { ProfileForm } from './pages/profileForm/ProfileForm';
 import { Calender } from './pages/calender/Calender';
@@ -12,7 +12,7 @@ import { Faq } from './pages/faq/Faq';
 import { Barchart } from './pages/barchart/Barchart';
 import { Piechart } from './pages/piechart/Piechart';
 import { Mapchart } from './pages/mapchart/Mapchart';
-import {linechart} from './pages/linechart/Linechart';
+import { LineChartComp } from './pages/lineChartComp/LineChartComp';
 // Define your routes
 const router = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       { path: "faq", element: <Faq /> },
       { path: "barchart", element: <Barchart /> },
       { path: "piechart", element: <Piechart /> },
-      // { path: "linechart", element: <linechart /> },
+      { path: "linechart", element: <LineChartComp /> },
       { path: "mapchart", element: <Mapchart /> },
     ],
   },
