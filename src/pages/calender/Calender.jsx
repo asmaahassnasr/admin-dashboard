@@ -100,16 +100,14 @@ function renderEventContent(eventInfo) {
 
 function Sidebar({ currentEvents }) {
   return (
-    <div>
-      <div>
+    <Paper sx={{mt:5 , width:"25%" ,}}>
         <h2>All Events ({currentEvents.length})</h2>
         <ul>
           {currentEvents.map((event) => (
             <SidebarEvent key={event.id} event={event} />
           ))}
         </ul>
-      </div>
-    </div>
+    </Paper>
   )
 }
 
