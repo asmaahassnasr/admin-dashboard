@@ -1,20 +1,28 @@
-import { Box, useTheme } from '@mui/material'
-import { ResponsiveChoropleth } from '@nivo/geo'
-import { data } from './mapData';
-import { geoData } from './mapCountries';
+import { Box, useTheme } from "@mui/material";
+import { ResponsiveChoropleth } from "@nivo/geo";
+import { data } from "./mapData";
+import { geoData } from "./mapCountries";
 
 export const Mapchart = () => {
+  const them = useTheme();
 
-    const them = useTheme();
-  
   return (
-    <Box sx={{height:"75vh" , border:`1px solid ${them.palette.text.primary}`}}>
-       <ResponsiveChoropleth /* or Choropleth for fixed dimensions */
+    <Box
+      sx={{
+        height: "100vh",
+        margin: 2,
+        p: 1,
+        border: `1px solid ${them.palette.divider}`,
+        borderRadius: "5px",
+      }}
+    >
+      <ResponsiveChoropleth
         data={data}
         features={geoData.features}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         colors="spectral"
-         theme={{
+        projectionScale={140}
+        theme={{
           background: them.palette.background.default,
           text: {
             fontSize: 11,
@@ -132,22 +140,22 @@ export const Mapchart = () => {
         borderWidth={0.5}
         borderColor="#152538"
         legends={[
-            {
-                anchor: 'bottom-left',
-                direction: 'column',
-                justify: true,
-                translateX: 20,
-                translateY: -100,
-                itemsSpacing: 0,
-                itemWidth: 94,
-                itemHeight: 18,
-                itemDirection: 'left-to-right',
-                itemTextColor: '#444444',
-                itemOpacity: 0.85,
-                symbolSize: 18
-            }
+          {
+            anchor: "bottom-left",
+            direction: "column",
+            justify: true,
+            translateX: 20,
+            translateY: -30,
+            itemsSpacing: 0,
+            itemWidth: 94,
+            itemHeight: 18,
+            itemDirection: "left-to-right",
+            itemTextColor: them.palette.text.primary,
+            itemOpacity: 0.85,
+            symbolSize: 18,
+          },
         ]}
-    />
+      />
     </Box>
-  )
-}
+  );
+};
