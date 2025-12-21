@@ -13,6 +13,7 @@ import { Barchart } from './pages/barchart/Barchart';
 import { Piechart } from './pages/piechart/Piechart';
 import { Mapchart } from './pages/mapchart/Mapchart';
 import { LineChartComp } from './pages/lineChartComp/LineChartComp';
+import NotFound from './pages/notFound/NotFound';
 // Define your routes
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "piechart", element: <Piechart /> },
       { path: "linechart", element: <LineChartComp /> },
       { path: "mapchart", element: <Mapchart /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);
