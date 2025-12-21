@@ -1,32 +1,31 @@
-import { useState } from 'react'
-import { formatDate } from '@fullcalendar/core'
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlugin from '@fullcalendar/interaction'
-import { Paper } from '@mui/material'
-import  './calendar.css'
+import { useState } from "react";
+import { formatDate } from "@fullcalendar/core";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import { Paper } from "@mui/material";
+import "./calendar.css";
+import TextHeaderSection from "../../components/TextHeaderSection";
 
-let eventGuid = 0
+let eventGuid = 0;
 export function createEventId() {
-  return String(eventGuid++)
+  return String(eventGuid++);
 }
 
-
 export const Calender = () => {
-
-  const [weekendsVisible, setWeekendsVisible] = useState(true)
-  const [currentEvents, setCurrentEvents] = useState([])
+  const [weekendsVisible, setWeekendsVisible] = useState(true);
+  const [currentEvents, setCurrentEvents] = useState([]);
 
   function handleWeekendsToggle() {
-    setWeekendsVisible(!weekendsVisible)
+    setWeekendsVisible(!weekendsVisible);
   }
 
   function handleDateSelect(selectInfo) {
-    let title = prompt('Please enter a new title for your event')
-    let calendarApi = selectInfo.view.calendar
+    let title = prompt("Please enter a new title for your event");
+    let calendarApi = selectInfo.view.calendar;
 
-    calendarApi.unselect() // clear date selection
+    calendarApi.unselect(); // clear date selection
 
     if (title) {
       calendarApi.addEvent({
@@ -34,29 +33,33 @@ export const Calender = () => {
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      })
+        allDay: selectInfo.allDay,
+      });
     }
   }
 
   function handleEventClick(clickInfo) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-      clickInfo.event.remove()
+    if (
+      confirm(
+        `Are you sure you want to delete the event '${clickInfo.event.title}'`
+      )
+    ) {
+      clickInfo.event.remove();
     }
   }
 
   function handleEvents(events) {
-    setCurrentEvents(events)
+    setCurrentEvents(events);
   }
-
-
 
   return (
     <>
+      <TextHeaderSection
+        title={"calendar"}
+        subTitle={"Create your events and todos"}
+      />
       <div className="demo-app">
-        <Sidebar
-          currentEvents={currentEvents}
-        />
+        <Sidebar currentEvents={currentEvents} />
         <div className="demo-app-main">
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -88,35 +91,39 @@ export const Calender = () => {
   );
 };
 
-
 function renderEventContent(eventInfo) {
   return (
     <>
       <b>{eventInfo.timeText}</b>
       <i>{eventInfo.event.title}</i>
     </>
-  )
+  );
 }
 
 function Sidebar({ currentEvents }) {
   return (
-    <Paper sx={{mt:5 , width:"25%" ,}}>
-        <h2>All Events ({currentEvents.length})</h2>
-        <ul>
-          {currentEvents.map((event) => (
-            <SidebarEvent key={event.id} event={event} />
-          ))}
-        </ul>
+    <Paper sx={{ mt: 5, width: "25%" }}>
+      <h2>All Events ({currentEvents.length})</h2>
+      <ul>
+        {currentEvents.map((event) => (
+          <SidebarEvent key={event.id} event={event} />
+        ))}
+      </ul>
     </Paper>
-  )
+  );
 }
 
 function SidebarEvent({ event }) {
   return (
-    <li key={event.id} style={{marginBottom:"10px"}}>
-      <b>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</b>
+    <li key={event.id} style={{ marginBottom: "10px" }}>
+      <b>
+        {formatDate(event.start, {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })}
+      </b>
       <i>{event.title}</i>
     </li>
-  )
+  );
 }
-

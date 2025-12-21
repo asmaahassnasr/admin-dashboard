@@ -1,16 +1,23 @@
 import { DataGrid } from "@mui/x-data-grid";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { cols, rows } from "./contactsData";
+import TextHeaderSection from "../../components/TextHeaderSection";
 
 export const Contacts = () => {
   return (
-    <Box sx={{ height: "100%", width: "98%", mx: "auto" }}>
-      <DataGrid
-        showToolbar
-        rows={rows}
-        // @ts-ignore
-        columns={cols}
+    <Stack gap={3}>
+      <TextHeaderSection
+        title={"contacts"}
+        subTitle={"List of contacts to future refrence"}
       />
-    </Box>
+      <Box sx={{ height: "100%", width: "98%", mx: "auto" }}>
+        <DataGrid
+          showToolbar
+          rows={rows}
+          // @ts-ignore
+          columns={cols}
+        />
+      </Box>
+    </Stack>
   );
 };

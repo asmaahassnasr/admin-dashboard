@@ -1,11 +1,12 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { rows } from "./tabledata";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
 import {
   AdminPanelSettingsOutlined,
   LockOpenOutlined,
   SecurityOutlined,
 } from "@mui/icons-material";
+import TextHeaderSection from "../../components/TextHeaderSection";
 
 export default function Team() {
   const theme = useTheme();
@@ -84,12 +85,18 @@ export default function Team() {
   ];
 
   return (
-    <Box sx={{ height: "100%", width: "98%", mx: "auto" }}>
-      <DataGrid
-        rows={rows}
-        // @ts-ignore
-        columns={columns}
+    <Stack gap={3}>
+      <TextHeaderSection
+        title={"team"}
+        subTitle={"Manageing the team members"}
       />
-    </Box>
+      <Box sx={{ height: "100%", width: "98%", mx: "auto" }}>
+        <DataGrid
+          rows={rows}
+          // @ts-ignore
+          columns={columns}
+        />
+      </Box>
+    </Stack>
   );
 }

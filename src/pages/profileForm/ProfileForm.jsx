@@ -7,6 +7,7 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
+import TextHeaderSection from "../../components/TextHeaderSection";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -50,112 +51,118 @@ export const ProfileForm = () => {
   };
 
   return (
-    <Box
-      onSubmit={handleSubmit(onSubmit)}
-      component={"form"}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 3,
-      }}
-    >
-      <Stack direction={"row"} gap={2}>
-        <TextField
-          error={Boolean(errors.firstName)}
-          helperText={
-            Boolean(errors.firstName)
-              ? "This field is required and min = 5 "
-              : ""
-          }
-          {...register("firstName", { required: true, minLength: 5 })}
-          sx={{ flex: 1 }}
-          variant="filled"
-          id="firstName"
-          label="First Name "
-        />
-        <TextField
-          error={Boolean(errors.lastName)}
-          helperText={
-            Boolean(errors.lastName)
-              ? "This field is required and min = 5 "
-              : ""
-          }
-          {...register("lastName", { required: true, minLength: 5 })}
-          sx={{ flex: 1 }}
-          variant="filled"
-          id="lastName"
-          label="Last Name "
-        />
-      </Stack>
-
-      <TextField
-        error={Boolean(errors.email)}
-        helperText={
-          Boolean(errors.email)
-            ? "This field is required and must be a valid email"
-            : ""
-        }
-        {...register("email", { required: true, pattern: emailRegex })}
-        variant="filled"
-        id="email"
-        label=" Email "
+    <Stack gap={3}>
+      <TextHeaderSection
+        title={"create user"}
+        subTitle={"Create a new user account"}
       />
-
-      <TextField
-        error={Boolean(errors.phone)}
-        helperText={
-          Boolean(errors.phone)
-            ? "This field is required and must be a valid phone"
-            : ""
-        }
-        {...register("phone", { required: true, pattern: phoneRegex })}
-        variant="filled"
-        id="phone"
-        label="Contact Number"
-      />
-
-      <TextField variant="filled" id="addressOne" label="Adress 1" />
-
-      <TextField variant="filled" id="addressTwo" label="Adress 2" />
-
-      <TextField
-        id="outlined-select-currency"
-        select
-        label="Role"
-        defaultValue="User"
+      <Box
+        onSubmit={handleSubmit(onSubmit)}
+        component={"form"}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 3,
+        }}
       >
-        {data.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
-
-      <Box sx={{ alignSelf: "end" }}>
-        <Button
-          type="submit"
-          sx={{ textTransform: "capitalize" }}
-          variant="contained"
-        >
-          Create New User
-        </Button>
-        <Snackbar 
-          anchorOrigin={{ vertical:"top", horizontal:"right" }}
-          key={"top" + "right"}
-          open={open}
-          autoHideDuration={2000}
-          onClose={handleClose}
-        >
-          <Alert
-            onClose={handleClose}
-            severity="info"
+        <Stack direction={"row"} gap={2}>
+          <TextField
+            error={Boolean(errors.firstName)}
+            helperText={
+              Boolean(errors.firstName)
+                ? "This field is required and min = 5 "
+                : ""
+            }
+            {...register("firstName", { required: true, minLength: 5 })}
+            sx={{ flex: 1 }}
             variant="filled"
-            sx={{ width: "100%", color:"#fff" , transition:".25s"}}
+            id="firstName"
+            label="First Name "
+          />
+          <TextField
+            error={Boolean(errors.lastName)}
+            helperText={
+              Boolean(errors.lastName)
+                ? "This field is required and min = 5 "
+                : ""
+            }
+            {...register("lastName", { required: true, minLength: 5 })}
+            sx={{ flex: 1 }}
+            variant="filled"
+            id="lastName"
+            label="Last Name "
+          />
+        </Stack>
+
+        <TextField
+          error={Boolean(errors.email)}
+          helperText={
+            Boolean(errors.email)
+              ? "This field is required and must be a valid email"
+              : ""
+          }
+          {...register("email", { required: true, pattern: emailRegex })}
+          variant="filled"
+          id="email"
+          label=" Email "
+        />
+
+        <TextField
+          error={Boolean(errors.phone)}
+          helperText={
+            Boolean(errors.phone)
+              ? "This field is required and must be a valid phone"
+              : ""
+          }
+          {...register("phone", { required: true, pattern: phoneRegex })}
+          variant="filled"
+          id="phone"
+          label="Contact Number"
+        />
+
+        <TextField variant="filled" id="addressOne" label="Adress 1" />
+
+        <TextField variant="filled" id="addressTwo" label="Adress 2" />
+
+        <TextField
+          id="outlined-select-currency"
+          select
+          label="Role"
+          defaultValue="User"
+        >
+          {data.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+
+        <Box sx={{ alignSelf: "end" }}>
+          <Button
+            type="submit"
+            sx={{ textTransform: "capitalize" }}
+            variant="contained"
           >
-            User Added Successfully
-          </Alert>
-        </Snackbar>
+            Create New User
+          </Button>
+          <Snackbar
+            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+            key={"top" + "right"}
+            open={open}
+            autoHideDuration={2000}
+            onClose={handleClose}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="info"
+              variant="filled"
+              sx={{ width: "100%", color: "#fff", transition: ".25s" }}
+            >
+              User Added Successfully
+            </Alert>
+          </Snackbar>
+        </Box>
       </Box>
-    </Box>
+    </Stack>
   );
 };
