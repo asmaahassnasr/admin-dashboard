@@ -1,76 +1,53 @@
 import { Box, useTheme } from "@mui/material";
-import { ResponsiveBar } from "@nivo/bar";
-
+import { ResponsivePie } from "@nivo/pie";
 const data = [
   {
-    country: "AD",
-    "hot dog": 125,
-    burger: 146,
-    sandwich: 18,
-    kebab: 173,
+    id: "haskell",
+    label: "haskell",
+    value: 534,
+    color: "hsl(117, 70%, 50%)",
   },
   {
-    country: "AE",
-    "hot dog": 138,
-    burger: 132,
-    sandwich: 172,
-    kebab: 93,
+    id: "erlang",
+    label: "erlang",
+    value: 332,
+    color: "hsl(309, 70%, 50%)",
   },
   {
-    country: "AF",
-    "hot dog": 17,
-    burger: 23,
-    sandwich: 96,
-    kebab: 81,
+    id: "java",
+    label: "java",
+    value: 179,
+    color: "hsl(244, 70%, 50%)",
   },
   {
-    country: "AG",
-    "hot dog": 11,
-    burger: 48,
-    sandwich: 15,
-    kebab: 185,
+    id: "sass",
+    label: "sass",
+    value: 411,
+    color: "hsl(69, 70%, 50%)",
   },
   {
-    country: "AI",
-    "hot dog": 98,
-    burger: 15,
-    sandwich: 20,
-    kebab: 9,
-  },
-  {
-    country: "AL",
-    "hot dog": 173,
-    burger: 39,
-    sandwich: 103,
-    kebab: 186,
-  },
-  {
-    country: "AM",
-    "hot dog": 168,
-    burger: 134,
-    sandwich: 128,
-    kebab: 166,
+    id: "javascript",
+    label: "javascript",
+    value: 443,
+    color: "hsl(156, 70%, 50%)",
   },
 ];
 
-export default function BarChartComponent({ isDashboard = false }) {
+export default function SimplePieChart() {
   const them = useTheme();
 
   return (
-    <Box
-      sx={{
-        height: isDashboard ? "350px" : "75vh",
-      }}
-    >
-      <ResponsiveBar /* or Bar for fixed dimensions */
+    <Box py={2} height={"300px"}>
+      <ResponsivePie /* or Pie for fixed dimensions */
         data={data}
-        indexBy="country"
-        keys={["hot dog", "burger", "sandwich", "kebab"]}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        colors={{ scheme: "paired" }}
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        innerRadius={0.7}
+        padAngle={0.6}
+        enableArcLabels={false}
+        enableArcLinkLabels={false}
+        colors={{ scheme: "category10" }}
+        cornerRadius={2}
         theme={{
-          background: isDashboard ? "none": them.palette.background.default,
           text: {
             fontSize: 11,
             fill: them.palette.text.primary,
@@ -178,20 +155,6 @@ export default function BarChartComponent({ isDashboard = false }) {
             tableCellValue: {},
           },
         }}
-        legends={[
-          {
-            dataFrom: "keys",
-            anchor: "bottom-right",
-            direction: "column",
-            translateX: 120,
-            itemsSpacing: 3,
-            itemWidth: 100,
-            itemHeight: 16,
-          },
-        ]}
-        axisBottom={{ legend: isDashboard? "" :"country (indexBy)", legendOffset: 35 }}
-        axisLeft={{ legend: isDashboard? "" : "food", legendOffset: -50 }}
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       />
     </Box>
   );

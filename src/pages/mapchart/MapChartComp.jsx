@@ -1,76 +1,28 @@
 import { Box, useTheme } from "@mui/material";
-import { ResponsiveBar } from "@nivo/bar";
+import { ResponsiveChoropleth } from "@nivo/geo";
+import { data } from "./mapData";
+import { geoData } from "./mapCountries";
 
-const data = [
-  {
-    country: "AD",
-    "hot dog": 125,
-    burger: 146,
-    sandwich: 18,
-    kebab: 173,
-  },
-  {
-    country: "AE",
-    "hot dog": 138,
-    burger: 132,
-    sandwich: 172,
-    kebab: 93,
-  },
-  {
-    country: "AF",
-    "hot dog": 17,
-    burger: 23,
-    sandwich: 96,
-    kebab: 81,
-  },
-  {
-    country: "AG",
-    "hot dog": 11,
-    burger: 48,
-    sandwich: 15,
-    kebab: 185,
-  },
-  {
-    country: "AI",
-    "hot dog": 98,
-    burger: 15,
-    sandwich: 20,
-    kebab: 9,
-  },
-  {
-    country: "AL",
-    "hot dog": 173,
-    burger: 39,
-    sandwich: 103,
-    kebab: 186,
-  },
-  {
-    country: "AM",
-    "hot dog": 168,
-    burger: 134,
-    sandwich: 128,
-    kebab: 166,
-  },
-];
-
-export default function BarChartComponent({ isDashboard = false }) {
+export default function MapChartComp({ isDashboard = false }) {
   const them = useTheme();
-
   return (
     <Box
       sx={{
-        height: isDashboard ? "350px" : "75vh",
+        height: isDashboard ? "350px" : "100vh",
+        margin: 2,
+        p: 1,
+        border: isDashboard ? "none" : `1px solid ${them.palette.divider}`,
+        borderRadius: "5px",
       }}
     >
-      <ResponsiveBar /* or Bar for fixed dimensions */
+      <ResponsiveChoropleth
         data={data}
-        indexBy="country"
-        keys={["hot dog", "burger", "sandwich", "kebab"]}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        colors={{ scheme: "paired" }}
+        features={geoData.features}
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        colors="spectral"
+        projectionScale={isDashboard ? 50 : 140}
         theme={{
-          background: isDashboard ? "none": them.palette.background.default,
+          background: isDashboard ? "none" : them.palette.background.default,
           text: {
             fontSize: 11,
             fill: them.palette.text.primary,
@@ -99,7 +51,7 @@ export default function BarChartComponent({ isDashboard = false }) {
               },
               text: {
                 fontSize: 11,
-                fill: them.palette.text.primary,
+                fill: them.palette.text.secondary,
                 outlineWidth: 0,
                 outlineColor: them.palette.text.primary,
               },
@@ -108,7 +60,7 @@ export default function BarChartComponent({ isDashboard = false }) {
           grid: {
             line: {
               stroke: them.palette.divider,
-              strokeWidth: 1,
+              strokeWidth: 0,
             },
           },
           legends: {
@@ -178,20 +130,34 @@ export default function BarChartComponent({ isDashboard = false }) {
             tableCellValue: {},
           },
         }}
-        legends={[
-          {
-            dataFrom: "keys",
-            anchor: "bottom-right",
-            direction: "column",
-            translateX: 120,
-            itemsSpacing: 3,
-            itemWidth: 100,
-            itemHeight: 16,
-          },
-        ]}
-        axisBottom={{ legend: isDashboard? "" :"country (indexBy)", legendOffset: 35 }}
-        axisLeft={{ legend: isDashboard? "" : "food", legendOffset: -50 }}
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+        domain={[0, 1000000]}
+        unknownColor="#666666"
+        label="properties.name"
+        valueFormat=".2s"
+        enableGraticule={false}
+        graticuleLineColor="#dddddd"
+        borderWidth={0.5}
+        borderColor="#152538"
+        legends={
+          isDashboard
+            ? []
+            : [
+                {
+                  anchor: "bottom-left",
+                  direction: "column",
+                  justify: true,
+                  translateX: 20,
+                  translateY: -30,
+                  itemsSpacing: 0,
+                  itemWidth: 94,
+                  itemHeight: 18,
+                  itemDirection: "left-to-right",
+                  itemTextColor: them.palette.text.primary,
+                  itemOpacity: 0.85,
+                  symbolSize: 18,
+                },
+              ]
+        }
       />
     </Box>
   );

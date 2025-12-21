@@ -6,7 +6,7 @@ import SectionThree from "./SectionThree";
 
 export default function Dashboard() {
   return (
-    <Stack gap={2}>
+    <Stack gap={3}>
       <Box sx={{ textAlign: "end" }}>
         <Button
           sx={{ padding: "6px 8px", textTransform: "capitalize" }}
