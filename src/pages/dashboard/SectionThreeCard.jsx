@@ -8,7 +8,7 @@ export default function SectionThreeCard({
 }) {
 
   return (
-    <Paper sx={{p: 2, width:"33%", flexGrow:1 }}>
+    <Paper sx={{p: 2,flex:1}}>
       <Stack gap={2}>
         <Typography variant="h5" color="secondary">
           {cardTitle}

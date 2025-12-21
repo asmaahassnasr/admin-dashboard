@@ -22,7 +22,7 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import { Avatar, Stack, Typography } from "@mui/material";
+import { Avatar, Stack, Tooltip, Typography } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
@@ -97,14 +97,22 @@ const elementArrOne = [
 ];
 
 const elementArrTwo = [
-  { text: "Profile Form", icon: <PersonOutlineOutlinedIcon />, path: "/profileForm" },
+  {
+    text: "Profile Form",
+    icon: <PersonOutlineOutlinedIcon />,
+    path: "/profileForm",
+  },
   { text: "Calender", icon: <CalendarTodayOutlinedIcon />, path: "/calender" },
   { text: "FAQs Page", icon: <HelpOutlineOutlinedIcon />, path: "/faq" },
 ];
 
 const elementArrThree = [
   { text: "Bar Chart", icon: <BarChartOutlinedIcon />, path: "/barchart" },
-  { text: "Pie Chart", icon: <PieChartOutlineOutlinedIcon />, path: "/piechart" },
+  {
+    text: "Pie Chart",
+    icon: <PieChartOutlineOutlinedIcon />,
+    path: "/piechart",
+  },
   { text: "Line Chart", icon: <TimelineOutlinedIcon />, path: "/linechart" },
   { text: "Geography Chart", icon: <MapOutlinedIcon />, path: "/mapchart" },
 ];
@@ -116,7 +124,11 @@ export default function SideBar({ open, handleDrawerClose }) {
 
   return (
     <>
-      <Drawer variant="permanent" open={open} sx={{scrollbarColor:"#888 transparent" , }}>
+      <Drawer
+        variant="permanent"
+        open={open}
+        sx={{ scrollbarColor: "#888 transparent" }}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -161,55 +173,57 @@ export default function SideBar({ open, handleDrawerClose }) {
         <List>
           {elementArrOne.map((ele) => (
             <ListItem key={ele.path} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-              onClick={() => { 
-                navigate(ele.path)
-               }}
-                sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5,
-                    bgcolor: location.pathname === ele.path? "gray" : null,
-                  },
-                  open
-                    ? {
-                        justifyContent: "initial",
-                      }
-                    : {
-                        justifyContent: "center",
-                      },
-                ]}
-              >
-                <ListItemIcon
+              <Tooltip title={open ? null : ele.text} placement="left-end">
+                <ListItemButton
+                  onClick={() => {
+                    navigate(ele.path);
+                  }}
                   sx={[
                     {
-                      minWidth: 0,
-                      justifyContent: "center",
+                      minHeight: 48,
+                      px: 2.5,
+                      bgcolor: location.pathname === ele.path ? "gray" : null,
                     },
                     open
                       ? {
-                          mr: 3,
+                          justifyContent: "initial",
                         }
                       : {
-                          mr: "auto",
+                          justifyContent: "center",
                         },
                   ]}
                 >
-                  {ele.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={ele.text}
-                  sx={[
-                    open
-                      ? {
-                          opacity: 1,
-                        }
-                      : {
-                          opacity: 0,
-                        },
-                  ]}
-                />
-              </ListItemButton>
+                  <ListItemIcon
+                    sx={[
+                      {
+                        minWidth: 0,
+                        justifyContent: "center",
+                      },
+                      open
+                        ? {
+                            mr: 3,
+                          }
+                        : {
+                            mr: "auto",
+                          },
+                    ]}
+                  >
+                    {ele.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={ele.text}
+                    sx={[
+                      open
+                        ? {
+                            opacity: 1,
+                          }
+                        : {
+                            opacity: 0,
+                          },
+                    ]}
+                  />
+                </ListItemButton>
+              </Tooltip>
             </ListItem>
           ))}
         </List>
@@ -219,55 +233,57 @@ export default function SideBar({ open, handleDrawerClose }) {
         <List>
           {elementArrTwo.map((ele) => (
             <ListItem key={ele.path} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-              onClick={() => { 
-                navigate(ele.path)
-               }}
-                sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5,
-                    bgcolor: location.pathname === ele.path? "gray" : null,
-                  },
-                  open
-                    ? {
-                        justifyContent: "initial",
-                      }
-                    : {
-                        justifyContent: "center",
-                      },
-                ]}
-              >
-                <ListItemIcon
+              <Tooltip title={open ? null : ele.text} placement="left-end">
+                <ListItemButton
+                  onClick={() => {
+                    navigate(ele.path);
+                  }}
                   sx={[
                     {
-                      minWidth: 0,
-                      justifyContent: "center",
+                      minHeight: 48,
+                      px: 2.5,
+                      bgcolor: location.pathname === ele.path ? "gray" : null,
                     },
                     open
                       ? {
-                          mr: 3,
+                          justifyContent: "initial",
                         }
                       : {
-                          mr: "auto",
+                          justifyContent: "center",
                         },
                   ]}
                 >
-                  {ele.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={ele.text}
-                  sx={[
-                    open
-                      ? {
-                          opacity: 1,
-                        }
-                      : {
-                          opacity: 0,
-                        },
-                  ]}
-                />
-              </ListItemButton>
+                  <ListItemIcon
+                    sx={[
+                      {
+                        minWidth: 0,
+                        justifyContent: "center",
+                      },
+                      open
+                        ? {
+                            mr: 3,
+                          }
+                        : {
+                            mr: "auto",
+                          },
+                    ]}
+                  >
+                    {ele.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={ele.text}
+                    sx={[
+                      open
+                        ? {
+                            opacity: 1,
+                          }
+                        : {
+                            opacity: 0,
+                          },
+                    ]}
+                  />
+                </ListItemButton>
+              </Tooltip>
             </ListItem>
           ))}
         </List>
@@ -277,55 +293,57 @@ export default function SideBar({ open, handleDrawerClose }) {
         <List>
           {elementArrThree.map((ele) => (
             <ListItem key={ele.path} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-              onClick={() => { 
-                navigate(ele.path)
-               }}
-                sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5,
-                    bgcolor: location.pathname === ele.path? "gray" : null,
-                  },
-                  open
-                    ? {
-                        justifyContent: "initial",
-                      }
-                    : {
-                        justifyContent: "center",
-                      },
-                ]}
-              >
-                <ListItemIcon
+              <Tooltip title={open ? null : ele.text} placement="left-end">
+                <ListItemButton
+                  onClick={() => {
+                    navigate(ele.path);
+                  }}
                   sx={[
                     {
-                      minWidth: 0,
-                      justifyContent: "center",
+                      minHeight: 48,
+                      px: 2.5,
+                      bgcolor: location.pathname === ele.path ? "gray" : null,
                     },
                     open
                       ? {
-                          mr: 3,
+                          justifyContent: "initial",
                         }
                       : {
-                          mr: "auto",
+                          justifyContent: "center",
                         },
                   ]}
                 >
-                  {ele.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={ele.text}
-                  sx={[
-                    open
-                      ? {
-                          opacity: 1,
-                        }
-                      : {
-                          opacity: 0,
-                        },
-                  ]}
-                />
-              </ListItemButton>
+                  <ListItemIcon
+                    sx={[
+                      {
+                        minWidth: 0,
+                        justifyContent: "center",
+                      },
+                      open
+                        ? {
+                            mr: 3,
+                          }
+                        : {
+                            mr: "auto",
+                          },
+                    ]}
+                  >
+                    {ele.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={ele.text}
+                    sx={[
+                      open
+                        ? {
+                            opacity: 1,
+                          }
+                        : {
+                            opacity: 0,
+                          },
+                    ]}
+                  />
+                </ListItemButton>
+              </Tooltip>
             </ListItem>
           ))}
         </List>

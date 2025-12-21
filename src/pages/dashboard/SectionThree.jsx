@@ -2,7 +2,7 @@ import {Stack} from "@mui/material";
 import SectionThreeCard from "./SectionThreeCard";
 import SimplePieChart from "../../pages/piechart/SimplePieChart";
 import BarChartComponent from "../../pages/barchart/BarChartComponent";
-import MapChartComp from "../../pages/mapchart/mapChartComp";
+import MapChartComp from "../../pages/mapchart/MapChartComp";
 
 
 

@@ -136,8 +136,8 @@ export default function MapChartComp({ isDashboard = false }) {
         valueFormat=".2s"
         enableGraticule={false}
         graticuleLineColor="#dddddd"
-        borderWidth={0.5}
-        borderColor="#152538"
+        borderWidth={1.5}
+        borderColor="#fff"
         legends={
           isDashboard
             ? []
