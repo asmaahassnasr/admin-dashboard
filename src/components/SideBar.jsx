@@ -116,7 +116,7 @@ export default function SideBar({ open, handleDrawerClose }) {
 
   return (
     <>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} sx={{scrollbarColor:"#888 transparent" , }}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
