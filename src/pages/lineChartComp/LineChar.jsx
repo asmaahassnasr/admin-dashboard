@@ -1,278 +1,279 @@
 import { Box, useTheme } from "@mui/material";
 import { ResponsiveLine } from "@nivo/line";
-export default function LineChar() {
+
+const data = [
+  {
+    id: "japan",
+    data: [
+      {
+        x: "plane",
+        y: 242,
+      },
+      {
+        x: "helicopter",
+        y: 211,
+      },
+      {
+        x: "boat",
+        y: 224,
+      },
+      {
+        x: "train",
+        y: 1,
+      },
+      {
+        x: "subway",
+        y: 200,
+      },
+      {
+        x: "bus",
+        y: 266,
+      },
+      {
+        x: "car",
+        y: 86,
+      },
+      {
+        x: "moto",
+        y: 288,
+      },
+      {
+        x: "bicycle",
+        y: 278,
+      },
+      {
+        x: "horse",
+        y: 50,
+      },
+      {
+        x: "skateboard",
+        y: 296,
+      },
+      {
+        x: "others",
+        y: 155,
+      },
+    ],
+  },
+  {
+    id: "france",
+    data: [
+      {
+        x: "plane",
+        y: 154,
+      },
+      {
+        x: "helicopter",
+        y: 197,
+      },
+      {
+        x: "boat",
+        y: 24,
+      },
+      {
+        x: "train",
+        y: 100,
+      },
+      {
+        x: "subway",
+        y: 246,
+      },
+      {
+        x: "bus",
+        y: 189,
+      },
+      {
+        x: "car",
+        y: 266,
+      },
+      {
+        x: "moto",
+        y: 36,
+      },
+      {
+        x: "bicycle",
+        y: 19,
+      },
+      {
+        x: "horse",
+        y: 137,
+      },
+      {
+        x: "skateboard",
+        y: 125,
+      },
+      {
+        x: "others",
+        y: 14,
+      },
+    ],
+  },
+  {
+    id: "us",
+    data: [
+      {
+        x: "plane",
+        y: 164,
+      },
+      {
+        x: "helicopter",
+        y: 60,
+      },
+      {
+        x: "boat",
+        y: 95,
+      },
+      {
+        x: "train",
+        y: 237,
+      },
+      {
+        x: "subway",
+        y: 46,
+      },
+      {
+        x: "bus",
+        y: 106,
+      },
+      {
+        x: "car",
+        y: 16,
+      },
+      {
+        x: "moto",
+        y: 9,
+      },
+      {
+        x: "bicycle",
+        y: 14,
+      },
+      {
+        x: "horse",
+        y: 124,
+      },
+      {
+        x: "skateboard",
+        y: 230,
+      },
+      {
+        x: "others",
+        y: 32,
+      },
+    ],
+  },
+  {
+    id: "germany",
+    data: [
+      {
+        x: "plane",
+        y: 156,
+      },
+      {
+        x: "helicopter",
+        y: 209,
+      },
+      {
+        x: "boat",
+        y: 193,
+      },
+      {
+        x: "train",
+        y: 138,
+      },
+      {
+        x: "subway",
+        y: 261,
+      },
+      {
+        x: "bus",
+        y: 161,
+      },
+      {
+        x: "car",
+        y: 50,
+      },
+      {
+        x: "moto",
+        y: 120,
+      },
+      {
+        x: "bicycle",
+        y: 267,
+      },
+      {
+        x: "horse",
+        y: 173,
+      },
+      {
+        x: "skateboard",
+        y: 235,
+      },
+      {
+        x: "others",
+        y: 275,
+      },
+    ],
+  },
+  {
+    id: "norway",
+    data: [
+      {
+        x: "plane",
+        y: 159,
+      },
+      {
+        x: "helicopter",
+        y: 245,
+      },
+      {
+        x: "boat",
+        y: 150,
+      },
+      {
+        x: "train",
+        y: 293,
+      },
+      {
+        x: "subway",
+        y: 177,
+      },
+      {
+        x: "bus",
+        y: 214,
+      },
+      {
+        x: "car",
+        y: 15,
+      },
+      {
+        x: "moto",
+        y: 181,
+      },
+      {
+        x: "bicycle",
+        y: 127,
+      },
+      {
+        x: "horse",
+        y: 222,
+      },
+      {
+        x: "skateboard",
+        y: 227,
+      },
+      {
+        x: "others",
+        y: 232,
+      },
+    ],
+  },
+];
+
+export default function LineChar({isDashboard = false}) {
   const them = useTheme();
 
-  const data = [
-    {
-      id: "japan",
-      data: [
-        {
-          x: "plane",
-          y: 242,
-        },
-        {
-          x: "helicopter",
-          y: 211,
-        },
-        {
-          x: "boat",
-          y: 224,
-        },
-        {
-          x: "train",
-          y: 1,
-        },
-        {
-          x: "subway",
-          y: 200,
-        },
-        {
-          x: "bus",
-          y: 266,
-        },
-        {
-          x: "car",
-          y: 86,
-        },
-        {
-          x: "moto",
-          y: 288,
-        },
-        {
-          x: "bicycle",
-          y: 278,
-        },
-        {
-          x: "horse",
-          y: 50,
-        },
-        {
-          x: "skateboard",
-          y: 296,
-        },
-        {
-          x: "others",
-          y: 155,
-        },
-      ],
-    },
-    {
-      id: "france",
-      data: [
-        {
-          x: "plane",
-          y: 154,
-        },
-        {
-          x: "helicopter",
-          y: 197,
-        },
-        {
-          x: "boat",
-          y: 24,
-        },
-        {
-          x: "train",
-          y: 100,
-        },
-        {
-          x: "subway",
-          y: 246,
-        },
-        {
-          x: "bus",
-          y: 189,
-        },
-        {
-          x: "car",
-          y: 266,
-        },
-        {
-          x: "moto",
-          y: 36,
-        },
-        {
-          x: "bicycle",
-          y: 19,
-        },
-        {
-          x: "horse",
-          y: 137,
-        },
-        {
-          x: "skateboard",
-          y: 125,
-        },
-        {
-          x: "others",
-          y: 14,
-        },
-      ],
-    },
-    {
-      id: "us",
-      data: [
-        {
-          x: "plane",
-          y: 164,
-        },
-        {
-          x: "helicopter",
-          y: 60,
-        },
-        {
-          x: "boat",
-          y: 95,
-        },
-        {
-          x: "train",
-          y: 237,
-        },
-        {
-          x: "subway",
-          y: 46,
-        },
-        {
-          x: "bus",
-          y: 106,
-        },
-        {
-          x: "car",
-          y: 16,
-        },
-        {
-          x: "moto",
-          y: 9,
-        },
-        {
-          x: "bicycle",
-          y: 14,
-        },
-        {
-          x: "horse",
-          y: 124,
-        },
-        {
-          x: "skateboard",
-          y: 230,
-        },
-        {
-          x: "others",
-          y: 32,
-        },
-      ],
-    },
-    {
-      id: "germany",
-      data: [
-        {
-          x: "plane",
-          y: 156,
-        },
-        {
-          x: "helicopter",
-          y: 209,
-        },
-        {
-          x: "boat",
-          y: 193,
-        },
-        {
-          x: "train",
-          y: 138,
-        },
-        {
-          x: "subway",
-          y: 261,
-        },
-        {
-          x: "bus",
-          y: 161,
-        },
-        {
-          x: "car",
-          y: 50,
-        },
-        {
-          x: "moto",
-          y: 120,
-        },
-        {
-          x: "bicycle",
-          y: 267,
-        },
-        {
-          x: "horse",
-          y: 173,
-        },
-        {
-          x: "skateboard",
-          y: 235,
-        },
-        {
-          x: "others",
-          y: 275,
-        },
-      ],
-    },
-    {
-      id: "norway",
-      data: [
-        {
-          x: "plane",
-          y: 159,
-        },
-        {
-          x: "helicopter",
-          y: 245,
-        },
-        {
-          x: "boat",
-          y: 150,
-        },
-        {
-          x: "train",
-          y: 293,
-        },
-        {
-          x: "subway",
-          y: 177,
-        },
-        {
-          x: "bus",
-          y: 214,
-        },
-        {
-          x: "car",
-          y: 15,
-        },
-        {
-          x: "moto",
-          y: 181,
-        },
-        {
-          x: "bicycle",
-          y: 127,
-        },
-        {
-          x: "horse",
-          y: 222,
-        },
-        {
-          x: "skateboard",
-          y: 227,
-        },
-        {
-          x: "others",
-          y: 232,
-        },
-      ],
-    },
-  ];
-
   return (
-    <Box sx={{ height: "75vh" }}>
+    <Box sx={{ height: isDashboard? "300px" : "75vh" }}>
       <ResponsiveLine /* or Line for fixed dimensions */
         data={data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
@@ -283,13 +284,13 @@ export default function LineChar() {
           stacked: true,
           reverse: false,
         }}
-        axisBottom={{ legend: "transportation", legendOffset: 45 }}
-        axisLeft={{ legend: "count", legendOffset: -50 }}
+        axisBottom={{ legend: isDashboard? "" : "transportation", legendOffset: 45 }}
+        axisLeft={{ legend: isDashboard? "" :"count", legendOffset: -50 }}
         pointSize={10}
         curve="catmullRom"
         pointColor={{ theme: "background" }}
         theme={{
-          background: them.palette.background.default,
+          background: isDashboard? "none" : them.palette.background.default,
           text: {
             fontSize: 11,
             fill: them.palette.text.primary,
