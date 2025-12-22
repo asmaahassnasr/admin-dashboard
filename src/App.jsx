@@ -8,9 +8,10 @@ import SideBar from "./components/SideBar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Outlet } from "react-router-dom";
 
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
+
+const theme = createTheme({
+  colorSchemes: {
+    dark: true,
   },
 });
 
@@ -35,7 +36,7 @@ export default function App() {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <TopBar open={open} handleDrawerOpen={handleDrawerOpen} />

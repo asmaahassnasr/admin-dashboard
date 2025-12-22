@@ -79,7 +79,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function TopBar({ open, handleDrawerOpen }) {
 
-    const theme = useTheme()
   const { mode, setMode } = useColorScheme();
 
   return (
@@ -119,11 +118,11 @@ export default function TopBar({ open, handleDrawerOpen }) {
 
           <Stack direction={"row"}>
             {mode ==="light" ? (
-              <IconButton color="inherit" onClick={() => { setMode("light") }}>
+              <IconButton color="inherit" onClick={() => { setMode("dark") }}>
                 <LightModeOutlinedIcon />
               </IconButton>
             ) : (
-              <IconButton color="inherit" onClick={() => { setMode("dark") }}>
+              <IconButton color="inherit" onClick={() => { setMode("light") }}>
                 <DarkModeOutlinedIcon />
               </IconButton>
             )}
